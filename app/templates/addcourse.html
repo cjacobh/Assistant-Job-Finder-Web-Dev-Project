@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+{% block content %}
+<div class="bg-image"></div>
+<div class="bg-text">
+    <h1>Course Information:</h1>
+    
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.subject.label }}<br>
+            {{ form.subject(class='userRegister') }}<br>
+        </p>
+        <p>
+            {{ form.number.label }}<br>
+            {{ form.number(class='userRegister') }}<br>
+        </p>
+        <p>
+            {{ form.title.label }}<br>
+            {{ form.title(class='userRegister') }}<br>
+        </p>
+        <p>
+            {{ form.numslots.label }}<br>
+            {{ form.numslots(class='userRegister') }}<br>
+        </p>
+        <p>
+            <h3>Optional: </h3>
+            {{ form.gpareq.label }}<br>
+            {{ form.gpareq(class='userRegister') }}<br>
+        </p>
+        <p>
+            {{ form.prevgrade.label }}<br>
+            {{ form.prevgrade(class='userRegister') }}<br>
+        </p>
+        <p>
+            {{ form.addinfo.label }}<br>
+            {{ form.addinfo(class='userRegister') }}<br>
+        </p>
+        <p>{{ form.submit(class='button') }}</p>
+        <div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <span>{{ message }}</span>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+    </form>
+</div>
+{% endblock %}

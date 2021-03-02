@@ -1,0 +1,73 @@
+{% block content %}
+<html>
+    <body>    
+        <div class="bg-image"></div>
+        <head>
+            <title>TA Course Finder - Home Page</title>
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        </head>
+        <div class="bg-text">
+            <div>
+            <table>
+                <tr>
+                    <td><a href="{{ url_for('index') }}" class = "mybutton">Homepage</a></td>
+                    <td><a href="{{ url_for('editTA') }}" class = "mybutton">Edit Profile</a></td>
+                    <td><a href="{{ url_for('viewapps') }}" class = "mybutton">View Applications</a></td>
+                    {% if current_user.is_anonymous %}
+                        <td><a href="{{ url_for('login') }}" class = "mybutton"> Login </a></td>
+                    {% else %}
+                        <td><a href="{{ url_for('logout') }}" class = "mybutton"> Logout </a></td>
+                        <td> Current user is: <span class="useritem"> {{ current_user.username }} </span></td>
+                    {% if current_user.tof == 1 %}
+                        <td> Current user role: TA </td>
+                    {% else %}
+                        <td> Current user role: Faculty </td>
+                    {% endif %}
+                    {% endif %}
+                </tr>
+            </table>
+            </div>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class ="flash-container"> {{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <h1>Welcome to the TA Course Finder!</h1>
+            <h2>Recommended Courses for you:</h2>
+            <table class = 'coursetable' style = 'width:100%' valign = 'top'>
+                <tr>
+                    <td>Subject</td>
+                    <td>Number</td>
+                    <td>Title</td>
+                    <td>Number of Available Positions</td>
+                    <td>GPA Requirement</td>
+                    <td>Previous Grade Minimum (if taken)</td>
+                    <td>Faculty Contact Information</td>
+                    <td>Additional Info</td>
+                </tr>
+                {% for course in reccourses %}
+                    {% include 'course.html' %} 
+                {% endfor %}
+            </table>
+            <h2>All courses with available TA positions:</h2>
+            <table class = 'coursetable' style = 'width:100%' valign = 'top'>
+                <tr>
+                    <td>Subject</td>
+                    <td>Number</td>
+                    <td>Title</td>
+                    <td>Number of Available Positions</td>
+                    <td>GPA Requirement</td>
+                    <td>Previous Grade Minimum (if taken)</td>
+                    <td>Faculty Contact Information</td>
+                    <td>Additional Info</td>
+                </tr>
+                {% for course in courses %}
+                    {% include 'course.html' %} 
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+</html>
+{% endblock %}

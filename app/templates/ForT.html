@@ -1,0 +1,18 @@
+{% block content %}
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    </head>
+    <body class="wsuLogoBackground">
+        <div class="loginBox">
+        </br>
+        </br>
+        <h1>Register as a:</h1>
+        <a href="{{ url_for('registerfac') }}" class = "mybutton">Faculty</a>
+        <a href="{{ url_for('registerTA') }}" class = "mybutton">TA</a>
+        </div>
+        </form>
+    </div>
+    </body>
+</html>
+{% endblock %}

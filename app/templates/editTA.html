@@ -1,0 +1,77 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+{% block content %}
+<div class="bg-image"></div>
+<div class="bg-text">
+    <h1>Your Current Information:</h1>
+    <div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class ="flash-container"> {{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    <form action="" method="get">
+        {{ form.hidden_tag() }}    
+        <table class = 'coursetable' style = 'width:100%' valign = 'top'>    
+            <tr>
+                <td><div>Username</div></td>
+                <td><div>Full Name</div></td>
+                <td><div>Phone Number</div></td>
+                <td><div>Major</div></td>
+                <td><div>Cumulative GPA</div></td>
+                <td><div>Expected Graduation Date</div></td>
+            </tr>
+            <tr>
+                <td><div>{{ current_user.username }}</div></td>
+                <td><div>{{ current_user.fullname }}</div></td>
+                <td><div>{{ current_user.phonenum }}</div></td>
+                <td><div>{{ current_user.major }}</div></td>
+                <td><div>{{ current_user.cgpa }}</div></td>
+                <td><div>{{ current_user.egd }}</div></td>
+            </tr>
+        </table>
+    </form>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <h4>Edit your Profile below:</h4> <em>For information you'd like to keep unchanged, simply fill in the boxes with your current information</em>
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(class='userRegister') }}<br>
+        </p>
+        <p>
+            {{ form.fullname.label }}<br>
+            {{ form.fullname(class='userRegister') }}<br>
+        </p>
+        <p>
+            {{ form.phonenum.label }}<br>
+            {{ form.phonenum(class='userRegister') }}<br>
+        </p>
+        <p>
+            {{ form.major.label }}<br>
+            {{ form.major(class='userRegister') }}<br>
+        </p>
+        <p>
+            {{ form.cgpa.label }}<br>
+            {{ form.cgpa(class='userRegister') }}<br>
+        </p>
+        <p>
+            {{ form.egd.label }}<br>
+            {{ form.egd(class='userRegister') }}<br>
+            
+        </p>
+        <p>
+            <h3>Enter password to verify changes:  </h3>
+            {{ form.password.label }}<br>
+            {{ form.password(class='userRegister') }}<br>
+            {{ form.password2.label }}<br>
+            {{ form.password2(class='userRegister') }}<br>
+        </p>
+        <h5>Must submit to save changes!</h5>
+        <p>{{ form.submit(class='button') }}</p>
+        <td><a href="{{ url_for('index') }}" class = "mybutton">Back to Homepage</a></td>
+    </form>
+</div>
+{% endblock %}

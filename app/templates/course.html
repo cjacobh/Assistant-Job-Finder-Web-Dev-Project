@@ -1,0 +1,14 @@
+<tr>
+    <td><div>{{course.subject}}</div></td>
+    <td><div>{{course.number}}</div></td>
+    <td><div>{{course.title}}</div></td>
+    <td><div>{{course.numslots}}</div></td>
+    <td><div>{{course.gpareq}}</div></td>
+    <td><div>{{course.prevgrade}}</div></td>
+    <td><div>{{course.professor.fullname}}</div><div>{{course.professor.email}}</div></td>
+    <td><div>{{course.addinfo}}</div></td>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <td><a href="{{ url_for('apply', course_id = course.id) }}" class = "mybutton">Apply</a></td>
+    </form>
+</tr>

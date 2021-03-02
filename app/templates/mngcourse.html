@@ -1,0 +1,13 @@
+<tr>
+    <td><div>{{course.id}}</div></td>
+    <td><div>{{course.subject}}</div></td>
+    <td><div>{{course.number}}</div></td>
+    <td><div>{{course.title}}</div></td>
+    <td><div>{{course.numslots}}</div></td>
+    <td><div>{{course.gpareq}}</div></td>
+    <td><div>{{course.prevgrade}}</div></td>
+    <td><div>{{course.professor.fullname}}</div><div>{{course.professor.email}}</div></td>
+    <td><div>{{course.addinfo}}</div></td>
+    <td><a href="{{ url_for('editcourse', course_id = course.id) }}" class = "mybutton">Edit</a></td>
+    <td><a href="{{ url_for('deletecourse', course_id = course.id) }}" class = "mybutton">Delete</a></td>
+</tr>

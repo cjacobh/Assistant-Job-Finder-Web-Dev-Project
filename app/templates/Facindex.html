@@ -1,0 +1,57 @@
+{% block content %}
+<div class="bg-image"></div>
+    <head>
+        <title>TA Course Finder - Home Page</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    </head>
+    <div class="bg-text">
+        <table>
+            <tr>
+                <td><a href="{{ url_for('Facindex') }}" class = "mybutton">Homepage</a></td>
+                <td><a href="{{ url_for('editfac') }}" class = "mybutton">Edit Profile</a></td>
+                <td><a href="{{ url_for('managecourses') }}" class = "mybutton">Manage Courses</a></td>
+                {% if current_user.is_anonymous %}
+                    <td><a href="{{ url_for('login') }}" class = "mybutton"> Login </a></td>
+                {% else %}
+                    <td><a href="{{ url_for('logout') }}" class = "mybutton"> Logout </a></td>
+                    <td> Current user is: <span class="useritem"> {{ current_user.username }} </span></td>
+                {% if current_user.tof == 1 %}
+                    <td> Current user role: TA </td>
+                {% else %}
+                    <td> Current user role: Faculty </td>
+                {% endif %}
+                <td><a href="{{ url_for('addcourse') }}" class = "mybutton">Create a New Course</a></td>
+                {% endif %}
+            </tr>
+        </table>
+            <div>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class ="flash-container"> {{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>    
+        <h1>Welcome to the TA Course Finder!</h1>
+        <h3>List of Current Applications: </h3><br>
+        <table class = 'coursetable' style = 'width:100%' valign = 'top'>
+            <tr>
+                <td>Applying For</td>
+                <td>TA Name</td>
+                <td>Email</td>
+                <td>Phone Number</td>
+                <td>WSU ID</td>
+                <td>Major</td>
+                <td>Cumulative GPA</td>
+                <td>Previous Grade in Course</td>
+                <td>When Student Took Course</td>
+                <td>When Student is Applying For</td>
+                <td>Expected Graduation Date</td>
+            </tr>
+            {% for apps in applications %}
+                {% include 'application.html' %} 
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

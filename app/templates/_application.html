@@ -1,0 +1,16 @@
+<tr>
+    <td><div>{{ app._course.title }}</div></td>
+    <td><div>{{ app._user.fullname }}</div></td>
+    <td><div>{{ app._user.email }}</div></td>
+    <td><div>{{ app._user.phonenum }}</div></td>
+    <td><div>{{ app._user.wsuid }}</div></td>
+    <td><div>{{ app._user.major }}</div></td>
+    <td><div>{{ app._user.cgpa }}</div></td>
+    <td><div>{{ app.prevgrade }}</div></td>
+    <td><div>{{ app.whentaken }}</div></td>
+    <td><div>{{ app.whenappfor }}</div></td>
+    <td><div>{{ app._user.egd }}</div></td>
+    <td><a href="{{ url_for('updateapp', app_id = app.id) }}" class = "mybutton">Update</a></td>
+    <td><a href="{{ url_for('deleteapp', app_id = app.id) }}" class = "mybutton">Withdraw</a></td>
+</tr>
+<tr><td colspan = "11">Statement: {{ app.statement }}</td></tr>

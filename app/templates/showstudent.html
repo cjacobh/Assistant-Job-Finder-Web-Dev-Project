@@ -1,0 +1,11 @@
+<tr>
+    <td>{{s.fullname}}</td>
+    <td>{{s.email}}</td>
+    <td>{{s.wsuid}}</td>
+    <td>{{s.phonenum}}</td>
+    <td>{{s.major}}</td>
+    <td>{{s.cgpa}}</td>
+    <td>{{s.egd}}</td>
+    <td>No Current Course</td>
+    <td><a href="{{ url_for('assign', user_id = s.id) }}" class = "mybutton">Assign Student to Course</a></td>  
+</tr>

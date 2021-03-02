@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+{% block content %}
+<div class="bg-image"></div>
+<div class="bg-text">
+    <h1>Your Current Courses:</h1>
+    <div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class ="flash-container"> {{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    <form action="" method="get">
+        {{ form.hidden_tag() }}    
+        <table class = 'coursetable' style = 'width:100%' valign = 'top'>    
+            <tr>
+                <td>Course ID</td>
+                <td>Subject</td>
+                <td>Number</td>
+                <td>Title</td>
+                <td>GPA Requirement</td>
+                <td>Previous Grade Minimum (if taken)</td>
+                <td>Number of Available Positions</td>
+                <td>Additional Info</td>
+            </tr>
+            {% for course in profcourses %}
+                {% include 'profcourses.html' %}
+            {% endfor %}
+        </table>
+    </form>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <h4>Assign the Student to one of your courses by changing the number to the corresponding Course ID:</h4> <em>If you changed your mind about assigning this student, return to Manage Courses</em>
+        <table class = 'coursetable' style = 'width:100%' valign = 'top'>
+            <tr>
+                <td>Name</td>
+                <td>Email</td>
+                <td>WSU ID</td>
+                <td>Phone Number</td>
+                <td>Major</td>
+                <td>Cumulative GPA</td>
+                <td>Expected Graduation Date</td>
+                <td>Course Assigned To</td>
+            </tr>
+            <tr>
+                <td>{{student.fullname}}</td>
+                <td>{{student.email}}</td>
+                <td>{{student.wsuid}}</td>
+                <td>{{student.phonenum}}</td>
+                <td>{{student.major}}</td>
+                <td>{{student.cgpa}}</td>
+                <td>{{student.egd}}</td>
+                <td>{{student.status}}</td>
+            </tr>
+        </table>
+        <p>
+            {{ form.courseid.label }}<br>
+            {{ form.courseid(class='userRegister') }}<br>
+        </p>
+        <h5>Must submit to save changes!</h5>
+        <p>{{ form.assign(class='button') }}</p>
+        <td><a href="{{ url_for('managecourses') }}" class = "mybutton">Back to Manage Courses</a></td>
+    </form>
+</div>
+{% endblock %}

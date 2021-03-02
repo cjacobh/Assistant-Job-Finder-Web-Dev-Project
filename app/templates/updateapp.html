@@ -1,0 +1,72 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+{% block content %}
+<div class="bg-image"></div>
+<div class="bg-text">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class ="flash-container"> {{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+    <h1>Application's Current Information:</h1>
+    <form action="" method="get">
+        {{ form.hidden_tag() }}    
+        <table class = 'coursetable' style = 'width:100%' valign = 'top'>
+            <tr>
+                <td><div>Title</div></td>
+                <td><div>Full Name</div></td>
+                <td><div>Email</div></td>
+                <td><div>Phone Number</div></td>
+                <td><div>WSU ID</div></td>
+                <td><div>Major</div></td>
+                <td><div>Cumulative GPA</div></td>
+                <td><div>Previous Grade</div></td>
+                <td><div>When Taken</div></td>
+                <td><div>When Applying For</div></td>
+                <td><div>Expected Graduation Date</div></td>
+            </tr>
+            <tr>
+                <td><div>{{ app._course.title }}</div></td>
+                <td><div>{{ app._user.fullname }}</div></td>
+                <td><div>{{ app._user.email }}</div></td>
+                <td><div>{{ app._user.phonenum }}</div></td>
+                <td><div>{{ app._user.wsuid }}</div></td>
+                <td><div>{{ app._user.major }}</div></td>
+                <td><div>{{ app._user.cgpa }}</div></td>
+                <td><div>{{ app.prevgrade }}</div></td>
+                <td><div>{{ app.whentaken }}</div></td>
+                <td><div>{{ app.whenappfor }}</div></td>
+                <td><div>{{ app._user.egd }}</div></td>
+            </tr>
+            <tr>
+                <td colspan = "11">Statement: {{ app.statement }}</div></td>
+            </tr>
+        </table>
+    </form>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <h4>Edit your Application below:</h4> <em>For information you'd like to keep unchanged, simply fill in the boxes with your current information</em>
+        <p>
+            {{ form.prevgrade.label }}<br>
+            {{ form.prevgrade(class='userRegister') }}<br>
+        </p>
+        <p>
+            {{ form.whentaken.label }}<br>
+            {{ form.whentaken(class='userRegister') }}<br>
+        </p>
+        <p>
+            {{ form.whenappfor.label }}<br>
+            {{ form.whenappfor(class='userRegister') }}<br>
+        </p>
+        <p>
+            {{ form.statement.label }}<br>
+            {{ form.statement(class='statement') }}<br>
+        </p>
+        <h5>Must submit to save changes!</h5>
+        <p>{{ form.submit(class='mybutton') }}</p>
+        <td><a href="{{ url_for('viewapps') }}" class = "mybutton">Back to Homepage</a></td>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+{% block content %}
+<div class="bg-image"></div>
+<div class="bg-text">
+    <table>
+    <td><a href="{{ url_for('logout') }}" class = "mybutton"> Logout </a></td>
+    </table>
+    <h1>Congratulations! You are a TA!</h1>
+    <h2>Your Current Course Information:</h2>
+    <table class = 'coursetable' style = 'width:100%' valign = 'top'>
+        <tr>
+            <td>Subject</td>
+            <td>Number</td>
+            <td>Title</td>
+            <td>Number of Remaining Positions</td>
+            <td>GPA Requirement</td>
+            <td>Previous Grade Minimum (if taken)</td>
+            <td>Faculty Contact Information</td>
+            <td>Additional Info</td>
+        </tr>
+        {% include '_course.html' %} 
+    </table>
+    <h3>Click the following link if you'd like to withdraw from said course and apply for other positions:</h3>
+    <table>
+    <td><a href="{{ url_for('leavecourse') }}" class = "mybutton"> Leave Course </a></td>
+    </table>
+</div>
+
+{% endblock %}
