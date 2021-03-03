@@ -4,25 +4,27 @@ This project was created at WSU using Flask and SQLAlchemy in Python as the back
 Developed as a large-scale local webpage to utilize the knowledge gained in CS 322 last year.
 Many details of this project are purposefully hidden to avoid chances of Academic Dishonesty by future students in the course.
 
+The highlights of this program, in my opinion, are the database relationships utilized to create complex links between various forms of data, visible in models.py and forms.py, and the various functions utilized in each route, visible in routes.py.
+
 There are two User types in this program. TA's, and Faculty members.
 
 TA's can:
--Register
--Sign in
--Access their Homepage, which filters recommended courses to apply to based off of their specified major
--Apply to said courses
--Edit their profile
--Manage their applications
--And more
+Register,
+sign in,
+access their homepage, which filters recommended courses to apply to based off of their specified major,
+apply to said courses,
+edit their profile,
+manage their applications,
+and more.
 
 Faculty can:
--Register
--Sign in
--Access their Homepage, which shows all current applicants for each course
--Create Courses
--Manage their current courses and assigned/unassigned TA's
--Edit their profile
--And more
+Register,
+sign in,
+access their homepage, which shows all current applicants for each course,
+create courses,
+manage their current courses and assigned/unassigned TA's,
+edit their profile,
+and more.
 
 Screenshots:
 
