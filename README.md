@@ -1,7 +1,7 @@
 # Assistant-Job-Finder-Web-Dev-Project
 
 This project was created at WSU using Flask and SQLAlchemy in Python as the backend and HTML/CSS as the frontend.
-Developed as a large-scale local webpage to utilize the knowledge gained in CS 322 last year.
+Developed as a large-scale local webpage to utilize the knowledge gained in ****** last year.
 Many details of this project are purposefully hidden to avoid chances of Academic Dishonesty by future students in the course.
 
 The highlights of this program, in my opinion, are the database relationships utilized to create complex links between various forms of data, visible in models.py and forms.py, and the various functions utilized in each route, visible in routes.py.
